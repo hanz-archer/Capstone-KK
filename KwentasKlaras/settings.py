@@ -135,6 +135,9 @@ LOGIN_URL = 'login'
 
 AUTH_USER_MODEL = 'KwentasApp.CustomUser'
 
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+SESSION_COOKIE_AGE = 1209600 
+
 
 
 
