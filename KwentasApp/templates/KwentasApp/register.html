@@ -8,7 +8,6 @@
 	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style>
-		/* Add this style to initially hide the dropdown */
 		.content {
 			display: none;
 		}
@@ -20,11 +19,25 @@
 			<img src="{% static 'KwentasApp/img/logo.png' %}">
 		</div>
 		<div class="login-content">
-			<form action="{% url 'login' %}" method="post">
+			<form action="#" method="post">
 				{% csrf_token %}
 				<img src="{% static 'KwentasApp/img/avatar.png' %}">
 				<h2 class="title">Registration</h2>
-				
+				{% if messages %}
+				<div class="messages">
+					{% for message in messages %}
+					<p class="{{ message.tags }}">{{ message }}</p>
+					{% endfor %}
+				</div>
+				<script>
+					setTimeout(function() {
+					  var messagesDiv = document.querySelector('.messages');
+					  if (messagesDiv) {
+						messagesDiv.style.display = 'none';
+					  }
+					}, 3000);
+				  </script>
+				{% endif %}
            		<div class="input-div">
            		   <div class="i">
            		   		<i class="fas fa-user"></i>
@@ -53,9 +66,9 @@
 						<input type="text" name="department" placeholder="Department" onclick="toggleDropdown()" id="departmentInput" readonly>
 						<i class="fas fa-chevron-down" id="dropdownArrow" onclick="toggleDropdown()"></i>
 						<ul class="content" id="departmentOptions">
+							<li onclick="selectOption('IT Office')">IT Office</li>
 							<li onclick="selectOption('Engineering Office')">Engineering Office</li>
 							<li onclick="selectOption('Treasurers Office')">Treasurers Office</li>
-							<li onclick="selectOption('IT Office')">IT Office</li>
 							<li onclick="selectOption('Tourism Office')">Tourism Office</li>
 							<li onclick="selectOption('Mayor Office')">Mayor Office</li>
 						</ul>
