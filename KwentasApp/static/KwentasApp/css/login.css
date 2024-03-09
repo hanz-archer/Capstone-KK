@@ -103,7 +103,7 @@ form{
 	bottom: -2px;
 	width: 0%;
 	height: 2px;
-	background-color: #38d39f;
+	background-color: #007FFF;
 	transition: .4s;
 }
 
@@ -125,7 +125,7 @@ form{
 }
 
 .input-div.focus > .i > i{
-	color: #38d39f;
+	color: #007FFF;
 }
 
 .input-div > div > input{
@@ -157,7 +157,7 @@ a{
 }
 
 a:hover{
-	color: #38d39f;
+	color: #007FFF;
 }
 
 .btn{
@@ -167,7 +167,7 @@ a:hover{
 	border-radius: 25px;
 	outline: none;
 	border: none;
-	background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f);
+	background-image: linear-gradient(to right, #007FFF, #007FFF, #007FFF);
 	background-size: 200%;
 	font-size: 1.2rem;
 	color: #fff;
@@ -220,3 +220,51 @@ a:hover{
 		justify-content: center;
 	}
 }
+/* Add this style to hide the initial option */
+.select-hidden {
+    display: none;
+    visibility: hidden;
+}
+
+.drop {
+    position: relative;
+    display: inline-block;
+}
+
+#departmentInput {
+    padding-right: 30px; /* Leave space for the arrow icon */
+}
+
+#dropdownArrow {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.content {
+    display: none;
+    position: absolute;
+    top: 100%; /* Position the dropdown below the input */
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #d9d9d9;
+    z-index: 1;
+}
+
+.content.show {
+    display: block;
+}
+
+.content li {
+    padding: 10px;
+    list-style-type: none;
+    cursor: pointer;
+}
+
+.content li:hover {
+    background-color: #f0f0f0;
+}
+

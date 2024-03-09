@@ -14,8 +14,8 @@
 			<img src="{% static 'KwentasApp/img/logo.png' %}">
 		</div>
 		<div class="login-content">
-			<form action="index.html">
-				<img src="{% static 'KwentasApp/img/avatar.svg' %}">
+			<form action="{% url 'base' %}">
+				<img src="{% static 'KwentasApp/img/avatar.png' %}">
 				<h2 class="title">Welcome</h2>
            		<div class="input-div one">
            		   <div class="i">
@@ -27,12 +27,12 @@
            		   </div>
            		</div>
            		<div class="input-div pass">
-           		   <div class="i"> 
+           		   <div class="i clickable" id="show-password"> 
            		    	<i class="fas fa-lock"></i>
            		   </div>
            		   <div class="div">
            		    	<h5>Password</h5>
-           		    	<input type="password" class="input">
+           		    	<input type="password" class="input" id="password-input">
             	   </div>
             	</div>
             	<a href="#">Forgot Password?</a>
@@ -40,6 +40,34 @@
             </form>
         </div>
     </div>
+	</style>
     <script type="text/javascript" src="{% static 'KwentasApp/js/main.js' %}"></script>
+	<script>
+		document.getElementById('show-password').addEventListener('click', function () {
+			var passwordInput = document.getElementById('password-input');
+			var icon = document.querySelector('#show-password i');
+			if (passwordInput.type === 'password') {
+				passwordInput.type = 'text';
+				icon.classList.remove('fa-lock');
+				icon.classList.add('fa-unlock-alt');
+			} else {
+				passwordInput.type = 'password';
+				icon.classList.remove('fa-unlock-alt');
+				icon.classList.add('fa-lock');
+			}
+		});
+	</script>
+
+<script type="text/javascript">
+	document.addEventListener('DOMContentLoaded', function () {
+		var inputDiv = document.querySelector('.input-div');
+		var select = document.querySelector('.input-div select');
+
+		inputDiv.addEventListener('click', function () {
+			select.style.display = (select.style.display === 'none' || select.style.display === '') ? 'block' : 'none';
+		});
+	});
+</script>
+
 </body>
 </html>
