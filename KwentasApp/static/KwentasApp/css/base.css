@@ -17,7 +17,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 30px 8%;
+    padding: 15px 8%; /* Adjusted padding */
     background: #fff;
     display: flex;
     justify-content: space-between;
@@ -38,6 +38,7 @@ body {
     text-decoration: none;
     font-weight: 500;
     margin: 0 20px;
+    margin-top: 10px; /* Adjusted margin-top */
     transition: color 0.3s ease-in-out; /* Add transition for smooth color change */
 }
 
@@ -53,7 +54,7 @@ body {
     background-color: #fff; /* Set background color to white */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 1;
-    border-radius: 40px; /* Adjust the value as needed for the desired curve */
+    border-radius: 0px; /* Adjust the value as needed for the desired curve */
 }
 
 .navbar .dropdown-content a {
