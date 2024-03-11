@@ -8,6 +8,8 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.http import HttpResponse
 from django.views.decorators.cache import never_cache
+from django.contrib.auth.decorators import user_passes_test
+from django.contrib import messages
 
 def login_view(request):
     if request.method == 'POST':
@@ -17,25 +19,38 @@ def login_view(request):
 
         if user is not None:
             login(request, user)
-            return redirect(reverse('base'))  # Use reverse to get the URL by name
+            return redirect(reverse('home'))  # Use reverse to get the URL by name
         else:
             error = 'Invalid credentials. Please try again.'
             return render(request, 'KwentasApp/login.html', {'error': error})
 
     return render(request, 'KwentasApp/login.html')
 
-@never_cache
 @login_required
 def base_view(request):
     print("Is authenticated:", request.user.is_authenticated)
     print("Session:", request.session)
-    return render(request, 'KwentasApp/base.html')
 
 def logout_view(request):
     logout(request)
     return redirect(reverse('login'))
 
+@never_cache
+@login_required
+def home_view(request):
+    return render(request, 'KwentasApp/home.html')
+
+
+def is_superuser(user):
+    return user.is_authenticated and user.is_superuser
+
+@user_passes_test(is_superuser, login_url='login')
 def registration_view(request):
+
+    if not is_superuser(request.user):
+        messages.warning(request, 'Only superusers can access the registration page.')
+        return redirect('login')
+    
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():

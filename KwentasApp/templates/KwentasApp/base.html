@@ -24,8 +24,8 @@
                 <a href="#">Programs Projects & Activities</a>
                 <div class="dropdown-content">
                     <!-- Add your dropdown items here -->
-                    <a href="#">Dropdown Item 1</a>
-                    <a href="#">Dropdown Item 2</a>
+                    <a href="#">Current</a>
+                    <a href="#">Continuing</a>
                     <!-- Add more items as needed -->
                 </div>
             </div>
@@ -71,12 +71,16 @@
             </div>
 
             <div class="dropdown">
-                <a href="#"><i class="fa-solid fa-user-tie"></i> Admin</a>
+                {% if user.is_superuser %}
+                    <a href="#"><i class="fa-solid fa-user-tie"></i> Admin</a>
+                {% else %}
+                    <a href="#"><i class="fa-solid fa-user-tie"></i> Account</a>
+                {% endif %}
                 <div class="dropdown-content">
-                    <!-- Add your dropdown items here -->
-                    <a href="{% url 'register' %}">Add user</a>
-                    <a href="{% url 'logout' %}"><i class="fa-solid fa-door-open"></i> Logout</a>
-                    <!-- Add more items as needed -->
+                    {% if user.is_superuser %}
+                        <a href="{% url 'register' %}"><i class="fas fa fa-plus"></i>Add account</a>
+                    {% endif %}
+                    <a href="{% url 'logout' %}"><i class="fa-solid fa-door-open"></i> Logout</a>  
                 </div>
             </div>
 

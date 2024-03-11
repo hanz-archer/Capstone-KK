@@ -17,7 +17,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 15px 8%; /* Adjusted padding */
+    padding: 15px 3%; /* Adjusted padding */
     background: #fff;
     display: flex;
     justify-content: space-between;
@@ -51,10 +51,11 @@ body {
 .navbar .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #fff; /* Set background color to white */
+    background-color: #fff;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 1;
-    border-radius: 0px; /* Adjust the value as needed for the desired curve */
+    border-radius: 20px;
+    margin-left: 8%;
 }
 
 .navbar .dropdown-content a {
