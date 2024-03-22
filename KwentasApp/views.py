@@ -38,6 +38,10 @@ def logout_view(request):
 def reports_view(request):
     return render(request, 'KwentasApp/reports.html')
 
+
+def current_view(request):
+    return render(request, 'KwentasApp/currentproject.html')
+
 @never_cache
 @login_required
 def home_view(request):

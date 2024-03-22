@@ -19,7 +19,7 @@
          <div class="nav-menu" id="myNavMenu">
              <ul class="nav_menu_list">
                 <li class="nav_list {% if request.path == '/home/' %}active{% endif %}">
-                     <a href="#home" class="nav-link">Home</a>
+                     <a href="{% url 'home' %}" class="nav-link">Home</a>
                      <div class="circle"></div>
                  </li>
 
