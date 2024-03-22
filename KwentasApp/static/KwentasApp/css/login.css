@@ -8,7 +8,7 @@
 body{
     font-family: 'Poppins', sans-serif;
     overflow: hidden;
-	padding-top: 60px; /* Adjust the value as needed */
+	padding-top: 50px; /* Adjust the value as needed */
 
 }
 
@@ -20,12 +20,15 @@ body{
 	z-index: -1;
 }
 
-.container{
-    width: 100vw;
-    height: 100vh;
+.container {
+    position: absolute;
+    top: 50%; /* Adjusted to center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%);
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap :7rem;
+    grid-gap: 7rem;
+    max-width: 800px;
     padding: 0 2rem;
 }
 
