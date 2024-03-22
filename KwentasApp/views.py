@@ -35,6 +35,9 @@ def logout_view(request):
     logout(request)
     return redirect(reverse('login'))
 
+def reports_view(request):
+    return render(request, 'KwentasApp/reports.html')
+
 @never_cache
 @login_required
 def home_view(request):
