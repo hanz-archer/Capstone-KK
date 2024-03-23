@@ -101,14 +101,17 @@ nav {
     display: flex;
     align-items: center; /* Align items vertically */
     justify-content: space-between;
-    width: 100%;
+    width: 100vw;
     height: 90px;
     line-height: 90px;
     background: var(--body-color);
     padding-inline: 9vw;
     transition: .3s;
-    z-index: 100;
-    top: 2%;
+    z-index: 999;
+    left: 0; /* Align to the left edge of the viewport */
+    right: 0; /* Align to the right edge of the viewport */
+    top: 0; /* Align to the top of the viewport */
+    overflow: hidden; /* Prevent content overflow */
 }
 
 .nav-logo {
@@ -155,7 +158,12 @@ nav {
     font-weight: 500;
     padding-inline: 15px;
     margin-inline: 20px;
+    /* Add the following CSS properties to prevent long titles from overflowing */
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide overflowed text */
+    text-overflow: ellipsis; /* Display ellipsis (...) for overflowed text */
 }
+
 
 .nav-menu-btn {
     display: none;
@@ -309,23 +317,22 @@ h3 {
 
 /* Integrate table CSS */
 .table-container {
-    display: flex;
-    justify-content: center;
-}
-
-.table-container {
-    display: flex;
-    justify-content: center;
+    overflow-y: auto; /* Add vertical scrollbar */
+    max-height: calc(100vh - 200px); /* Adjust max-height to leave space for the navbar and other elements */
 }
 
 .content-table {
-    width: 100%; /* Set the table width to 100% */
-    font-size: 1em; /* Reset font size to default */
-    min-width: 600px; /* Set a minimum width for the table */
-    border-radius: 10px; /* Adjust border radius if needed */
-    box-shadow: none; /* Remove box shadow */
-    overflow-x: auto; /* Add horizontal scroll if the table overflows */
+    width: 100%;
+    font-size: 1em;
+    min-width: 600px;
+    border-radius: 10px;
+    box-shadow: none;
+    overflow-x: auto;
+    /* Remove the following styles to allow the table to scroll vertically */
+    /* overflow-y: auto; */
+    /* max-height: 500px; */
 }
+
 
 .content-table thead tr {
     background-color: #007FFF;
@@ -367,23 +374,79 @@ h3 {
 }
 
 
-.input {
+.input[type="text"] {
     width: 20%; /* Full width */
     height: 40px; /* Adjust height as needed */
     padding: 5px; /* Adjust padding as needed */
     border: 1px solid #d9d9d9; /* Border color */
     border-radius: 5px; /* Adjust border radius as needed */
     font-size: 14px; /* Font size */
-    color: #555; /* Text color */
+    color: #000; /* Text color */
+    background-color: #fff; /* Background color */
 }
 
-.input:focus {
+.input[type="text"]:focus {
     border-color: #007FFF; /* Border color when input is focused */
     outline: none; /* Remove default focus outline */
 }
 
-.input::placeholder {
+.input[type="text"]::placeholder {
     color: #999; /* Placeholder text color */
 }
+
+
+.btn-submitreport {
+    /* Retain properties from the .btn class */
+    display: inline-block;
+    width: calc(40% - 10px); /* Adjust width to fit beside each other with a small gap */
+    height: 30px; /* Adjust height as needed */
+    line-height: 30px; /* Center text vertically */
+    border-radius: 15px; /* Adjust border radius as needed */
+    outline: none;
+    border: none;
+    font-size: 0.9rem; /* Adjust font size as needed */
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+    margin: 1rem 5px; /* Adjust margin to create space between buttons */
+    cursor: pointer;
+    transition: .5s;
+
+    /* Override specific properties */
+    background-color: #007FFF; /* Change button background color */
+    width: auto; /* Allow button to expand based on content */
+    padding: 0 15px; /* Add padding to adjust button width */
+}
+
+
+.searchreport {
+    /* Retain properties from the .btn class */
+    display: inline-block;
+    width: calc(40% - 10px); /* Adjust width to fit beside each other with a small gap */
+    height: 30px; /* Adjust height as needed */
+    line-height: 30px; /* Center text vertically */
+    border-radius: 15px; /* Adjust border radius as needed */
+    outline: none;
+    border: none;
+    font-size: 0.9rem; /* Adjust font size as needed */
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+    margin: 1rem 5px; /* Adjust margin to create space between buttons */
+    cursor: pointer;
+    transition: .5s;
+
+    /* Override specific properties */
+    background-color: #008000; /* Change button background color to green */
+    width: auto; /* Allow button to expand based on content */
+    padding: 0 15px; /* Add padding to adjust button width *
+}
+
+.searchreport:hover {
+    background-color: #006400; /* Change button background color on hover to darker green */
+}
+
+
+
 
 
